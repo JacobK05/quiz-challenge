@@ -1,12 +1,12 @@
 var start = document.querySelector("#startQuiz");
-var questionText = document.getElementById('#newQuestion');
+var questionText = document.getElementById('Q1', 'Q2', 'Q3', 'Q4', 'Q5');
 var nextQuestion = document.querySelectorAll('section')
-var answer = document.getElementById('answers')
+var answer = document.getElementById('answersBtm')
 
 start.addEventListener("click", function(){
 
 
-    
+
 })
 
 
