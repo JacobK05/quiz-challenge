@@ -1,77 +1,121 @@
-var start = document.querySelector("#startQuiz");
+var startBtn = document.querySelectorId("startQuiz");
 // var questionText = document.getElementById('Q1', 'Q2', 'Q3', 'Q4', 'Q5');
-var nextQuestion = document.querySelectorAll('section')
-// var answer = document.getElementById('answersBtm')
+var nextBtn = document.querySelectorId('nextBtn');
+var questionsTxt = document.querySelectorId ('Question');
+var answerBtn = document.getElementById('answersBtm')
 var secondsLeft = 75;
 
-start.addEventListener("click", function(){
-    var timer = setInterval(function(){
-    secondsLeft--;
 
-        if (secondsLeft <= 0){
-      clearInterval(timer)
-        }
-    },1000);
-})
+startBtn.addEventListener("click", function(){
+    setTime();
+    showQuestion();
+}) 
+function setTime() {
+    var timer = setInterval(function() {
+      secondsLeft--;
+      if (secondsLeft <= 0) {
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
 
-var questions = [
+var questions = [ 
 
 {
     question:"Which one of these is part of the three functions use in Javascript, for converting data types? ",
     answer: [
-        {Choice1: "Number", correct: false},
-        {Choice2: "boolean", correct: false},
-        {Choice3: "string", correct: false},
-        {Choice4: "All of the above", correct: true},
+        {Choice: "Number", correct: false},
+        {Choice: "boolean", correct: false},
+        {Choice: "string", correct: false},
+        {Choice: "All of the above", correct: true},
     ]
 },
 
 {
     question:"How do you create a function in JavaScript?",
     answer: [
-        {Choice1: "Function myFunction()", correct: true},
-        {Choice2: "Function = myFunction", correct: false},
-        {Choice3: "Function: myFunction", correct: false},
-        {Choice4: "Function-myFunction", correct: false},
+        {Choice: "Function myFunction()", correct: true},
+        {Choice: "Function = myFunction", correct: false},
+        {Choice: "Function: myFunction", correct: false},
+        {Choice: "Function-myFunction", correct: false},
     ]
 },
 
 {
     question:"Which one will call the local.setItem element?",
     answer: [
-        {Choice1: "local.grabItem", correct: false},
-        {Choice2: "local.callItem", correct: false},
-        {Choice3: "local.getItem", correct: true},
-        {Choice4: "function local.setItem", correct: false},
+        {Choice: "local.grabItem", correct: false},
+        {Choice: "local.callItem", correct: false},
+        {Choice: "local.getItem", correct: true},
+        {Choice: "function local.setItem", correct: false},
     ]
 },
 {
     question:"Which one will allow you to write comments in Javascript?",
     answer: [
-        {Choice1: "comment", correct: false},
-        {Choice2: "<!-comment->", correct: false},
-        {Choice3: "//comment", correct: true},
-        {Choice4: "/?comment?/", correct: false},
+        {Choice: "comment", correct: false},
+        {Choice: "<!-comment->", correct: false},
+        {Choice: "//comment", correct: true},
+        {Choice: "/?comment?/", correct: false},
     ]
 },
 
 {
     question:" How do you write a (Code Quiz) alert box?",
     answer: [
-        {Choice1: "alert(code quiz)", correct: true},
-        {Choice2: "alert=code quiz", correct: false},
-        {Choice3: "alert.code quiz", correct: false},
-        {Choice4: "alert-code quiz", correct: false},
+        {Choice: "alert(code quiz)", correct: true},
+        {Choice: "alert=code quiz", correct: false},
+        {Choice: "alert.code quiz", correct: false},
+        {Choice: "alert-code quiz", correct: false},
     ]
 },
 
-
 ]
 
-var questionEL = document.getElementById("")
+var currentQuestionIndex = 0; 
+var score = 0;
 
 
+function start (){
+currentQuestionIndex = 0;
+score = 0;
+nextBtn.innerHTML = "next"
+showQuestion();
+}
+function showQuestion(){
+var currentQuestion = questions[currentQuestionIndex];
+var questionNumber = currentQuestionIndex + 1;
+questionsTxt.innerHTML = questionNumber + ". " + currentQuestion.question;
 
+answerBtn.innerHTML = "";
+
+currentQuestion.answer.forEach(answer =>  {
+var button = document.createElement('button')
+button.innerHTML = answer.Choice;
+button.classList.add('btn');
+button.addEventListener('click', function(){
+    checkAnswer(answer.correct)
+})
+answerBtn.appendChild(button);
+});;
+
+function checkAnswer(isCorrect) {
+    if (isCorrect) {
+      score++;
+    } else {
+      secondsLeft -= 5; // Subtract 5 seconds for incorrect answer
+    }
+  
+    currentQuestionIndex++;
+  
+    if (currentQuestionIndex < questions.length) {
+      showQuestion();
+    } else {
+      // Quiz is over
+      // Display final score or do something else
+    }
+  }
+}
 
 
 
