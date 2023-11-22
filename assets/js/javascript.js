@@ -1,15 +1,14 @@
-var startBtn = document.querySelectorId("startQuiz");
-// var questionText = document.getElementById('Q1', 'Q2', 'Q3', 'Q4', 'Q5');
-var nextBtn = document.querySelectorId('nextBtn');
-var questionsTxt = document.querySelectorId ('Question');
-var answerBtn = document.getElementById('answersBtm')
+var startBtn = document.getElementById("startQuiz");
+var nextBtn = document.getElementById('nextBtn');
+var questionsTxt = document.getElementById ('Question');
+var answerBtn = document.getElementById('answersBtn')
 var secondsLeft = 75;
 
 
 startBtn.addEventListener("click", function(){
     setTime();
     showQuestion();
-}) 
+})
 function setTime() {
     var timer = setInterval(function() {
       secondsLeft--;
@@ -77,25 +76,26 @@ var score = 0;
 
 
 function start (){
-currentQuestionIndex = 0;
-score = 0;
-nextBtn.innerHTML = "next"
-showQuestion();
+    currentQuestionIndex = 0;
+    score = 0;
+    nextBtn.innerHTML = "next"
+     showQuestion();
 }
 function showQuestion(){
 var currentQuestion = questions[currentQuestionIndex];
 var questionNumber = currentQuestionIndex + 1;
-questionsTxt.innerHTML = questionNumber + ". " + currentQuestion.question;
+    questionsTxt.innerHTML = questionNumber + ". " + currentQuestion.question;
 
-answerBtn.innerHTML = "";
+    answerBtn.innerHTML = "";
 
 currentQuestion.answer.forEach(answer =>  {
 var button = document.createElement('button')
-button.innerHTML = answer.Choice;
-button.classList.add('btn');
+    button.innerHTML = answer.Choice;
+    button.classList.add('btn');
+
 button.addEventListener('click', function(){
-    checkAnswer(answer.correct)
-})
+    checkAnswer(answer.correct);
+});
 answerBtn.appendChild(button);
 });;
 
