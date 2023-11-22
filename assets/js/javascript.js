@@ -5,9 +5,11 @@ var answerBtn = document.getElementById('answerBtn')
 var secondsLeft = 75;
 
 
-startBtn.addEventListener("click", function(){
+startBtn.addEventListener("click", function(event){
+    event.preventDefault();
     console.log('start button clicked')
     setTime();
+    start();
     showQuestion();
 });
 
@@ -19,6 +21,7 @@ function setTime() {
         clearInterval(timer);
       }
     }, 1000);
+    showQuestion();
   }
 
 
@@ -90,12 +93,17 @@ function start (){
 
 
 function showQuestion(){
+    if (currentQuestionIndex >= questions.length) {
+        console.log('Quiz is over');
+        return;
+      }
+
     var currentQuestion = questions[currentQuestionIndex];
     var questionNumber = currentQuestionIndex + 1;
     questionsTxt.innerHTML = questionNumber + ". " + currentQuestion.question;
     answerBtn.innerHTML = "";
 
-    currentQuestion.answer.forEach(answer =>  {
+currentQuestion.answer.forEach(answer =>  {
     var button = document.createElement('button')
     button.innerHTML = answer.Choice;
     button.classList.add('btn');
@@ -117,13 +125,7 @@ function checkAnswer(isCorrect) {
     }
   
     currentQuestionIndex++;
-  
-    if (currentQuestionIndex < questions.length) {
-      showQuestion();
-    } else {
-      'Quiz is over'
-      
-    }
+    showQuestion();
   }
 
 
