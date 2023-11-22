@@ -1,14 +1,17 @@
 var startBtn = document.getElementById("startQuiz");
 var nextBtn = document.getElementById('nextBtn');
 var questionsTxt = document.getElementById ('Question');
-var answerBtn = document.getElementById('answersBtn')
+var answerBtn = document.getElementById('answerBtn')
 var secondsLeft = 75;
 
 
 startBtn.addEventListener("click", function(){
+    console.log('start button clicked')
     setTime();
     showQuestion();
-})
+});
+
+
 function setTime() {
     var timer = setInterval(function() {
       secondsLeft--;
@@ -17,6 +20,8 @@ function setTime() {
       }
     }, 1000);
   }
+
+
 
 var questions = [ 
 
@@ -69,7 +74,8 @@ var questions = [
     ]
 },
 
-]
+];
+
 
 var currentQuestionIndex = 0; 
 var score = 0;
@@ -78,26 +84,30 @@ var score = 0;
 function start (){
     currentQuestionIndex = 0;
     score = 0;
-    nextBtn.innerHTML = "next"
+    nextBtn.innerHTML = "next";
      showQuestion();
 }
-function showQuestion(){
-var currentQuestion = questions[currentQuestionIndex];
-var questionNumber = currentQuestionIndex + 1;
-    questionsTxt.innerHTML = questionNumber + ". " + currentQuestion.question;
 
+
+function showQuestion(){
+    var currentQuestion = questions[currentQuestionIndex];
+    var questionNumber = currentQuestionIndex + 1;
+    questionsTxt.innerHTML = questionNumber + ". " + currentQuestion.question;
     answerBtn.innerHTML = "";
 
-currentQuestion.answer.forEach(answer =>  {
-var button = document.createElement('button')
+    currentQuestion.answer.forEach(answer =>  {
+    var button = document.createElement('button')
     button.innerHTML = answer.Choice;
     button.classList.add('btn');
 
-button.addEventListener('click', function(){
+    button.addEventListener('click', function(){
     checkAnswer(answer.correct);
-});
-answerBtn.appendChild(button);
-});;
+     });
+     answerBtn.appendChild(button);
+  });
+}
+
+
 
 function checkAnswer(isCorrect) {
     if (isCorrect) {
@@ -111,11 +121,11 @@ function checkAnswer(isCorrect) {
     if (currentQuestionIndex < questions.length) {
       showQuestion();
     } else {
-      // Quiz is over
-      // Display final score or do something else
+      'Quiz is over'
+      
     }
   }
-}
+
 
 
 
