@@ -1,16 +1,15 @@
 var startBtn = document.getElementById("startQuiz");
-var nextBtn = document.getElementById('nextBtn');
 var questionsTxt = document.getElementById ('Question');
 var answerBtn = document.getElementById('answerBtn')
 var secondsLeft = 75;
 
 
 startBtn.addEventListener("click", function(event){
+  showQuestion();
     event.preventDefault();
     console.log('start button clicked')
     setTime();
     start();
-    showQuestion();
 });
 
 
@@ -21,9 +20,8 @@ function setTime() {
         clearInterval(timer);
       }
     }, 1000);
-    showQuestion();
+  showQuestion();
   }
-
 
 
 var questions = [ 
@@ -61,7 +59,7 @@ var questions = [
     question:"Which one will allow you to write comments in Javascript?",
     answer: [
         {Choice: "comment", correct: false},
-        {Choice: "<!-comment->", correct: false},
+        {Choice: "<-comment->", correct: false},
         {Choice: "//comment", correct: true},
         {Choice: "/?comment?/", correct: false},
     ]
@@ -78,7 +76,7 @@ var questions = [
 },
 
 ];
-
+    
 
 var currentQuestionIndex = 0; 
 var score = 0;
@@ -87,7 +85,6 @@ var score = 0;
 function start (){
     currentQuestionIndex = 0;
     score = 0;
-    nextBtn.innerHTML = "next";
      showQuestion();
 }
 
@@ -96,7 +93,7 @@ function showQuestion(){
     if (currentQuestionIndex >= questions.length) {
         console.log('Quiz is over');
         return;
-      }
+      } 
 
     var currentQuestion = questions[currentQuestionIndex];
     var questionNumber = currentQuestionIndex + 1;
@@ -127,7 +124,6 @@ function checkAnswer(isCorrect) {
     currentQuestionIndex++;
     showQuestion();
   }
-
 
 
 
