@@ -1,6 +1,7 @@
 var startBtn = document.getElementById("startQuiz");
 var questionsTxt = document.getElementById ('Question');
 var answerBtn = document.getElementById('answerBtn')
+var secondsEL = document.getElementById('seconds')
 var secondsLeft = 75;
 
 
@@ -15,12 +16,12 @@ startBtn.addEventListener("click", function(event){
 
 function setTime() {
     var timer = setInterval(function() {
-      secondsLeft--;
+      secondLefts--;
+      secondsEL.textContent = secondsLeft;
       if (secondsLeft <= 0) {
         clearInterval(timer);
       }
     }, 1000);
-  showQuestion();
   }
 
 
@@ -85,6 +86,7 @@ var score = 0;
 function start (){
     currentQuestionIndex = 0;
     score = 0;
+    setTime();
      showQuestion();
 }
 
