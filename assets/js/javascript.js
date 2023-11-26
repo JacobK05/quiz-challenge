@@ -112,8 +112,11 @@ currentQuestion.answer.forEach(answer =>  {
   var listItem = document.createElement('li');
     var button = document.createElement('button')
     button.innerHTML = answer.Choice;
-    button.classList.add('btn');
+    button.setAttribute('style', 'color: white; background-color: purple;');
+    button.setAttribute('onmouseover', "this.style.opacity='0.7';");
+    button.setAttribute('onmouseout', "this.style.opacity='1';")
 
+    button.classList.add('btn');
     button.addEventListener('click', function(){
     checkAnswer(answer.correct);
      });
