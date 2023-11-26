@@ -2,15 +2,19 @@ var startBtn = document.getElementById("startQuiz");
 var questionsTxt = document.getElementById ('Question');
 var answerBtn = document.getElementById('answerBtn')
 var secondsEL = document.getElementById('seconds')
+var titlePage = document.getElementById('titlePage')
 var secondsLeft = 75;
 
 
-startBtn.addEventListener("click", function(event){
-  showQuestion();
+startBtn.addEventListener("click", function(event){  
+    titlePage.style.display = 'none'
+    startBtn.style.display = 'none'
+    showQuestion();
     event.preventDefault();
     console.log('start button clicked')
     setTime();
-    start();
+    start(); 
+
 });
 
 
@@ -101,8 +105,11 @@ function showQuestion(){
     var questionNumber = currentQuestionIndex + 1;
     questionsTxt.innerHTML = questionNumber + ". " + currentQuestion.question;
     answerBtn.innerHTML = "";
-
+    
+    var answerList = document.createElement('ol');
+    answerList.setAttribute('style', 'display: inline-block');
 currentQuestion.answer.forEach(answer =>  {
+  var listItem = document.createElement('li');
     var button = document.createElement('button')
     button.innerHTML = answer.Choice;
     button.classList.add('btn');
@@ -110,8 +117,11 @@ currentQuestion.answer.forEach(answer =>  {
     button.addEventListener('click', function(){
     checkAnswer(answer.correct);
      });
-     answerBtn.appendChild(button);
+     listItem.appendChild(button);
+     answerList.appendChild(listItem);
+     
   });
+  answerBtn.appendChild(answerList);
 }
 
 

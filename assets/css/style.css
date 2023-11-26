@@ -4,10 +4,9 @@ font-family:sans-serif;
 text-align: center;
 }
 
-.header-container {
+#titlePage {
 margin-top: 200px;
 }
-
 
 .headerP {
 font-size: 25px;
@@ -33,6 +32,12 @@ top: 0;
 right: 50px;
 color: purple;
 font-size: 25px;
+}
+
+.question-container{
+    margin-top: 200px;
+    font-size: 20px;
+    text-align: center;
 }
 
 
