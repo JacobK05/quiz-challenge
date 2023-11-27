@@ -86,13 +86,13 @@ var questions = [
 
 
 var currentQuestionIndex = 0; 
-var score = 0;
+var score = 0 ;
 var highScore = document.getElementById('high-score-container')
 
 function start (){
     currentQuestionIndex = 0;
     score = 0;
-     showQuestion();
+    showQuestion();
 }
 
 
@@ -133,7 +133,9 @@ currentQuestion.answer.forEach(answer =>  {
   answerBtn.appendChild(answerList);
 }
 
-
+function endQuiz(){
+  clearInterval(timer)
+}
 
 function checkAnswer(isCorrect) {
     if (isCorrect) {
