@@ -1,7 +1,7 @@
 var startBtn = document.getElementById("startQuiz");
 var questionsTxt = document.getElementById ('Question');
 var answerBtn = document.getElementById('answerBtn')
-var secondsEL = document.getElementById('seconds')
+var secondsEL = document.getElementById('secondsEL')
 var titlePage = document.getElementById('titlePage')
 var secondsLeft = 75;
 
@@ -20,7 +20,7 @@ startBtn.addEventListener("click", function(event){
 
 function setTime() {
     var timer = setInterval(function() {
-      secondLefts--;
+      secondsLeft--;
       secondsEL.textContent = secondsLeft;
       if (secondsLeft <= 0) {
         clearInterval(timer);
@@ -90,7 +90,6 @@ var score = 0;
 function start (){
     currentQuestionIndex = 0;
     score = 0;
-    setTime();
      showQuestion();
 }
 
