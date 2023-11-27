@@ -100,8 +100,10 @@ function showQuestion(){
     if (currentQuestionIndex >= questions.length) {
       questionsTxt.style.display = 'none'
       answerBtn.style.display = 'none'
-      var initials = document.getElementById('initialsInput')
-      highScore.innerHTML = `Congratulations! Your score is score.`;
+      var initials = document.getElementById('initialsInput').value; 
+      highScore.innerHTML = `Congratulations! Your score is ${score}.`;
+      localStorage.setItem('initials', initials);
+      localStorage.setItem('score', score);
       return;
       } 
 
