@@ -81,11 +81,13 @@ var questions = [
 },
 
 ];
-    
+  
+
+
 
 var currentQuestionIndex = 0; 
 var score = 0;
-
+var highScore = document.getElementById('high-score-container')
 
 function start (){
     currentQuestionIndex = 0;
@@ -96,8 +98,11 @@ function start (){
 
 function showQuestion(){
     if (currentQuestionIndex >= questions.length) {
-        console.log('Quiz is over');
-        return;
+      questionsTxt.style.display = 'none'
+      answerBtn.style.display = 'none'
+      var initials = document.getElementById('initialsInput')
+      highScore.innerHTML = `Congratulations! Your score is score.`;
+      return;
       } 
 
     var currentQuestion = questions[currentQuestionIndex];
@@ -138,6 +143,8 @@ function checkAnswer(isCorrect) {
     currentQuestionIndex++;
     showQuestion();
   }
+
+
 
 
 
