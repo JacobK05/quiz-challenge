@@ -42,11 +42,14 @@ font-size: 25px;
 
 #high-score-container {
     text-align: center;
-    font-size: 24px;
+    font-size: 32px;
 }
 
 #initialsBox {
     text-align: center;
+}
+.hide {
+    display: none;
 }
 
 

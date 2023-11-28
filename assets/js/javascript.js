@@ -6,8 +6,8 @@ var titlePage = document.getElementById('titlePage')
 var secondsLeft = 75;
 var currentQuestionIndex = 0; 
 var score = 0 ;
-var highScore = document.getElementById('high-score-container')
-var submitBtn = document.getElementById('submit')
+var yourScore = document.getElementById('high-score-container')
+
 
 startBtn.addEventListener("click", function(event){  
     titlePage.style.display = 'none'
@@ -97,8 +97,9 @@ function showQuestion(){
     if (currentQuestionIndex >= questions.length) {
       questionsTxt.style.display = 'none'
       answerBtn.style.display = 'none'
-      var initials = document.getElementById('initialsInput').value; 
-      highScore.innerHTML = `Congratulations! Your score is ${score}.`;
+      score = secondsLeft
+      document.getElementById('initialsInput').classList.remove('hide');
+      yourScore.innerHTML = `Congratulations! Your score is ${secondsLeft}.`;
       localStorage.setItem('initials', initials);
       localStorage.setItem('score', score);
       return;
