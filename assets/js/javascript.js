@@ -4,17 +4,18 @@ var answerBtn = document.getElementById('answerBtn')
 var secondsEL = document.getElementById('secondsEL')
 var titlePage = document.getElementById('titlePage')
 var secondsLeft = 75;
-
+var currentQuestionIndex = 0; 
+var score = 0 ;
+var highScore = document.getElementById('high-score-container')
+var submitBtn = document.getElementById('submit')
 
 startBtn.addEventListener("click", function(event){  
     titlePage.style.display = 'none'
     startBtn.style.display = 'none'
     showQuestion();
     event.preventDefault();
-    console.log('start button clicked')
     setTime();
-    start(); 
-
+    start();
 });
 
 
@@ -24,6 +25,7 @@ function setTime() {
       secondsEL.textContent = secondsLeft;
       if (secondsLeft <= 0) {
         clearInterval(timer);
+        
       }
     }, 1000);
   }
@@ -84,11 +86,6 @@ var questions = [
   
 
 
-
-var currentQuestionIndex = 0; 
-var score = 0 ;
-var highScore = document.getElementById('high-score-container')
-
 function start (){
     currentQuestionIndex = 0;
     score = 0;
@@ -105,6 +102,7 @@ function showQuestion(){
       localStorage.setItem('initials', initials);
       localStorage.setItem('score', score);
       return;
+        
       } 
 
     var currentQuestion = questions[currentQuestionIndex];
@@ -133,9 +131,6 @@ currentQuestion.answer.forEach(answer =>  {
   answerBtn.appendChild(answerList);
 }
 
-function endQuiz(){
-  clearInterval(timer)
-}
 
 function checkAnswer(isCorrect) {
     if (isCorrect) {
